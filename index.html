@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hillel home work</title>
+</head>
+<body>
+    <script>
+        function Student(name,surname,birthday) {
+    
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;       
+        this.arrayMarks = new Array(30)
+        this.marks = 0;
+        this.arrayPresence = new Array(30)
+        this.presence = 0; 
+        this.sumcountmark = 0;      
+
+        this.absent = function(){           
+            this.arrayPresence[this.presence++] = false;        
+        }
+
+        this.present = function(){      
+            this.arrayPresence[this.presence++] = true; 
+
+        }       
+        
+        this.mark = function(number) {
+            if(number >= 0 && number <= 10){
+                this.arrayMarks[this.marks++] = number;
+                this.sumcountmark += number;
+                
+            }
+            else {
+                alert("error!!!");
+            }
+
+        }
+        this.summary = function(classes){ //classes - количество пройденных занятий
+            
+                if(this.sumcountmark / this.marks > 9 && this.presence / classes > 0.9 ) {
+                    console.log("Ути какой молодчинка!")            
+
+                }
+                else if((this.sumcountmark / this.marks < 9 && this.presence / classes > 0.9) || (this.sumcountmark / this.marks > 9 && this.presence / classes < 0.9) ) {
+                    console.log("Норм, но можно лучше")         
+
+                }
+                else{
+                    console.log("Редиска!")     
+                }
+            }
+           
+        }
+    
+
+        let ivan = new Student("Иван", "Иванов", 2000);
+      
+        ivan.present();
+        ivan.mark(10);      
+        ivan.present();
+        ivan.mark(9);
+        ivan.absent();
+        ivan.present();
+        ivan.mark(9);
+        ivan.present();
+        ivan.mark(9);
+        ivan.present();
+        ivan.mark(9);
+        ivan.present();
+        ivan.mark(9);
+        ivan.present();
+        ivan.mark(9);
+        ivan.present();
+        ivan.mark(9);
+        ivan.present();
+        ivan.mark(9); 
+        console.log(ivan);       
+        ivan.summary(10);
+        
+    
+    </script>
+</body>
+</html>
